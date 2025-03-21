@@ -78,8 +78,7 @@ public class Pixler {
      * @param color the color value for the pixel
      */
     public void setPixel(int x, int y, Color color) {
-        // System.out.printf("PX %d %d %02x%02x%02x\\n", x, y, color.getRed(), color.getGreen(), color.getBlue());
-        sendMessage(String.format("PX %d %d %02x%02x%02x\\n", x, y, color.getRed(), color.getGreen(), color.getBlue()));
+        sendMessage(String.format("PX %d %d %02x%02x%02x\n", x, y, color.getRed(), color.getGreen(), color.getBlue()));
     }
 
     /**
@@ -90,7 +89,7 @@ public class Pixler {
      */
     public Color getPixel(int x, int y) {
         if(x < size[0] & y < size[1]) {
-            String color = sendMessageAndReceive(String.format("PX %d %d", x, y)).split(" ")[3];
+            String color = sendMessageAndReceive(String.format("PX %d %d\n", x, y)).split(" ")[3];
             System.out.println(color);
             int red = Integer.valueOf(color.substring(0, 2), 16);
             int green = Integer.valueOf(color.substring(2, 4), 16);
